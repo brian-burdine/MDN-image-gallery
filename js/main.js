@@ -36,12 +36,13 @@ for (const picture of pictures) {
         filenameEnd = picture.lastIndexOf('.');
         filename = picture.substring(filenameStart, filenameEnd)
     }
+    /* testing to see if I reasoned the filename thing ok, apparently I did!
     console.log(filename);
     debugger;
+    */
     newImage.setAttribute('alt', altTexts[filename]);
+    newImage.addEventListener('click', changeImage.bind(picture, filename));
     thumbBar.appendChild(newImage);
-    newImage.addEventListener('click', changeImage(picture, 
-        altTexts[filename]));
 }
 
 // Add an event listener to change the opacity when the button is clicked
@@ -56,11 +57,11 @@ function changeImage(source, altText) {
 // Callback funtion for the darken/lighten background button
 function changeDarkness() {
     if (backgroundButton.className == "dark") {
-        overlay.style.backgroundColor = rgba(0,0,0,0.5);
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
         backgroundButton.textContent = "Lighten";
         backgroundButton.setAttribute('class', 'light');
     } else {
-        overlay.style.backgroundColor = rgba(0,0,0,0.0);
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.0)';
         backgroundButton.textContent = "Darken";
         backgroundButton.setAttribute('class', 'dark');
     }
