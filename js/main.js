@@ -36,12 +36,18 @@ for (const picture of pictures) {
         filenameEnd = picture.lastIndexOf('.');
         filename = picture.substring(filenameStart, filenameEnd)
     }
-    /* testing to see if I reasoned the filename thing ok, apparently I did!
-    console.log(filename);
-    debugger;
+    /* 
+        testing to see if I reasoned the filename thing ok, apparently I did! 
+        console.log(filename);
+        debugger;
     */
     newImage.setAttribute('alt', altTexts[filename]);
-    newImage.addEventListener('click', changeImage.bind(picture, filename));
+    /* 
+        I don't feel as comfortable with this line of code as I would like, but 
+        this should let me pass arguments to the callback function so I don't
+        have to find the src and alt-text again
+    */
+    newImage.addEventListener('click', changeImage.bind(newImage, picture, altTexts[filename]));
     thumbBar.appendChild(newImage);
 }
 
